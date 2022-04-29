@@ -9,10 +9,6 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'SpringQL', // Usually your GitHub org/user name.
   projectName: 'SpringQL.github.io', // Usually your repo name.
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
   themeConfig: {
     navbar: {
       title: 'SpringQL',
