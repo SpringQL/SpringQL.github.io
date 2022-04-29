@@ -8,7 +8,7 @@ module.exports = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'SpringQL', // Usually your GitHub org/user name.
-  projectName: 'springql.github.io', // Usually your repo name.
+  projectName: 'SpringQL.github.io', // Usually your repo name.
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
