@@ -59,24 +59,6 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/SpringQL/SpringQL',
-              },
-            ],
-          },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} TOYOTA MOTOR CORPORATION. Built with Docusaurus.`,
       },
