@@ -45,9 +45,9 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'home',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Docs',
           },
           {
             href: 'https://github.com/SpringQL/SpringQL',
