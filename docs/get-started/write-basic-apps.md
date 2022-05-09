@@ -4,4 +4,29 @@ sidebar_position: 2
 
 # Write Basic Apps
 
+You might already succeeded in [running a demo app](./install-and-run-app).
+Now let's start writing some basic apps step-by-step.
+
+You will learn important ideas in stream processing from the following apps, including **event time**, **window**-based **aggregation** and **join**.
+
 ## App1: Simple arithmetic conversion over a stream
+
+Let's start with a very simple pipeline (dataflow in SpringQL), which is quite similar to the demo app you saw in previous page.
+
+```mermaid
+graph TB
+    fsrc(["TCP client (nc)"]) -- "Source reader (TCP server)" --> src[[source_temperature_celsius]] -- Pump: c_to_f<br>temperature * 1.8 + 32.0 --> sink[[sink_temperature_fahrenheit]] -- "Sink writer (TCP client)" --> fsink(["TCP server (nc)"])
+```
+
+The above diagram represents the pipeline you will define in the code.
+
+The top-most node is a foreign **source**. A foreign source continuously inputs data into a stream processing application.
+
+The bottom-most represents a foreign **sink**. A foreign sink continuously gets output from the stream processing application.
+
+The top square is a source **stream** and the bottom square is a sink stream. A stream is like a table in relational databases, which has a stream name, columns and their data types, and constraints (`NOT NULL`, for example).
+
+Edges from the foreign source is a source reader, who reads data from a foreign source and translates them into rows for the next source stream.
+Similarly, edges into the foreign sink is a sink writer, who fetches the rows in the sink stream and writes them into a foreign sink.
+
+The edge between the source stream and the sink stream is a **pump**. A pump reads rows from an upstream _stream_ (just called _upstream_), processes the rows into other ones, and writes new rows into a downstream _stream_ (just called _downstream_).
