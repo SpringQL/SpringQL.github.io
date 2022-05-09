@@ -254,7 +254,7 @@ int main()
         "    INSERT INTO sink_temperature_fahrenheit (ts, temperature)"
         "    SELECT STREAM"
         "       source_temperature_celsius.ts,"
-        "       source_temperature_celsius.temperature * 1.8 + 32.0"
+        "       32.0 + source_temperature_celsius.temperature * 1.8"
         "    FROM source_temperature_celsius;");
     assert_ok(ret);
 
