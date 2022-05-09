@@ -127,17 +127,23 @@ nc -l 54301
 cargo run
 ```
 
-```bash title="Run the app (input from foreign source)"
-echo '{"ts": "2022-01-01 13:00:00.000000000", "temperature": 5.3}' | nc localhost 54300
-```
-
 </TabItem>
 
 <TabItem value="c" label="C">
 
-```c title="main.rs"
+```c title="main.c"
 xxx
 ```
 
 </TabItem>
 </Tabs>
+
+```bash title="Run the app (input from foreign source)"
+echo '{"ts": "2022-01-01 13:00:00.000000000", "temperature": 5.3}' | nc localhost 54300
+```
+
+Then, you'll get the following outputs:
+
+```json title="Output"
+{"temperature":41.540000915527344,"ts":"2022-01-01 13:00:00.000000000"}
+```
