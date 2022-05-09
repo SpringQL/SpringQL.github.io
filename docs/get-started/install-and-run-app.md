@@ -81,7 +81,7 @@ fn main() {
                 INSERT INTO sink_temperature_fahrenheit (ts, temperature)
                 SELECT STREAM
                     source_temperature_celsius.ts,
-                    source_temperature_celsius.temperature * 1.8 + 32.0
+                    32.0 + source_temperature_celsius.temperature * 1.8
                 FROM source_temperature_celsius;
             ",
         )
@@ -101,7 +101,7 @@ fn main() {
         )
         .unwrap();
 
-    // Create a source reader as a TCP client (connecting to 127.0.0.1:9876).
+    // Create a source reader as a TCP server (listening to tcp/9876).
     // A source reader fetches stream rows from a foreign source, and emits them to a source stream.
     //
     // Dataflow starts soon after this command creates the source reader instance.
@@ -109,10 +109,9 @@ fn main() {
         .command(
             "
             CREATE SOURCE READER tcp_trade FOR source_temperature_celsius
-            TYPE NET_CLIENT OPTIONS (
+            TYPE NET_SERVER OPTIONS (
                 PROTOCOL 'TCP',
-                REMOTE_HOST '127.0.0.1',
-                REMOTE_PORT '9876'
+                PORT '9876'
             );
             ",
         )
@@ -131,16 +130,17 @@ fn main() {
 
 ### Run the demo
 
-In your terminal, start a TCP server with `nc` listening to port 9876, who sends 2 JSON records to a client:
-
-```bash title="Running nc server"
-echo '{"ts": "2022-01-01 13:00:00.000000000", "temperature": 5.3}\n{"ts": "2022-01-01 14:00:00.000000000", "temperature": 6.2}' | nc -l 9876
-```
-
-In another terminal, start the demo app:
+In your terminal, start the demo app:
 
 ```bash title="Running the demo app"
 cargo run
+```
+
+In another terminal, launch TCP clients with `nc` connecting to port 9876:
+
+```bash title="Running nc clients"
+echo '{"ts": "2022-01-01 13:00:00.000000000", "temperature": 5.3}' | nc localhost 9876
+echo '{"ts": "2022-01-01 14:00:00.000000000", "temperature": 6.2}' | nc localhost 9876
 ```
 
 Then you'll get the following outputs:
@@ -269,17 +269,16 @@ int main()
         "    );");
     assert_ok(ret);
 
-    // Create a source reader as a TCP client (connecting to 127.0.0.1:9876).
+    // Create a source reader as a TCP server (listening to tcp/9876).
     // A source reader fetches stream rows from a foreign source, and emits them to a source stream.
     //
     // Dataflow starts soon after this command creates the source reader instance.
     ret = spring_command(
         pipeline,
         "CREATE SOURCE READER tcp_trade FOR source_temperature_celsius"
-        "    TYPE NET_CLIENT OPTIONS ("
+        "    TYPE NET_SERVER OPTIONS ("
         "        PROTOCOL 'TCP',"
-        "        REMOTE_HOST '127.0.0.1',"
-        "        REMOTE_PORT '9876'"
+        "        PORT '9876'"
         "    );");
     assert_ok(ret);
 
@@ -331,13 +330,7 @@ Then, you'll get `a.out` as a runnable binary.
 
 ### Run the demo
 
-In your terminal, start a TCP server with `nc` listening to port 9876, who sends 2 JSON records to a client:
-
-```bash title="Running nc server"
-echo '{"ts": "2022-01-01 13:00:00.000000000", "temperature": 5.3}\n{"ts": "2022-01-01 14:00:00.000000000", "temperature": 6.2}' | nc -l 9876
-```
-
-In another terminal, start the demo app.
+In your terminal, start the demo app.
 You also need to link to the `libspringql_client` in run-time.
 
 ```bash title="Run the demo (Linux)"
@@ -346,6 +339,13 @@ LD_LIBRARY_PATH=. ./a.out
 
 ```bash title="Run the demo (macOS)"
 DYLD_LIBRARY_PATH=. ./a.out
+```
+
+In another terminal, launch TCP clients with `nc` connecting to port 9876:
+
+```bash title="Running nc clients"
+echo '{"ts": "2022-01-01 13:00:00.000000000", "temperature": 5.3}' | nc localhost 9876
+echo '{"ts": "2022-01-01 14:00:00.000000000", "temperature": 6.2}' | nc localhost 9876
 ```
 
 Then you'll get the following outputs:
