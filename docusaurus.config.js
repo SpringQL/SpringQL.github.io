@@ -25,6 +25,7 @@ const config = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/SpringQL/SpringQL.github.io/blob/main/',
+          remarkPlugins: [require('mdx-mermaid')],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
