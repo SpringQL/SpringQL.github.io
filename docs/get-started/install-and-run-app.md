@@ -30,7 +30,7 @@ cd springql-demo
 And then, add `springql-core` to your `Cargo.toml`:
 
 ```toml title="Cargo.toml"
-...
+# ...
 [dependencies]
 springql-core = "*"
 ```

@@ -2,6 +2,9 @@
 sidebar_position: 2
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Write Basic Apps
 
 You might already succeeded in [running a demo app](./install-and-run-app).
@@ -30,3 +33,30 @@ Edges from the foreign source is a source reader, who reads data from a foreign 
 Similarly, edges into the foreign sink is a sink writer, who fetches the rows in the sink stream and writes them into a foreign sink.
 
 The edge between the source stream and the sink stream is a **pump**. A pump reads rows from an upstream _stream_ (just called _upstream_), processes the rows into other ones, and writes new rows into a downstream _stream_ (just called _downstream_).
+
+You learned the very basic components to construct SpringQL's pipline. Now is the time to code.
+Choose your favorite language from the tabs:
+
+<Tabs>
+<TabItem value="rust" label="Rust">
+
+```toml title="Cargo.toml"
+# ...
+[dependencies]
+springql-core = "*"
+```
+
+```rust title="main.rs"
+xxx
+```
+
+</TabItem>
+
+<TabItem value="c" label="C">
+
+```c title="main.rs"
+xxx
+```
+
+</TabItem>
+</Tabs>
