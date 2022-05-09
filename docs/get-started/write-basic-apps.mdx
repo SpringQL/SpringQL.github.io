@@ -119,6 +119,18 @@ fn main() {
 }
 ```
 
+```bash title="Run the app (launch foreign sink)"
+nc -l 54301
+```
+
+```bash title="Run the app (start app)"
+cargo run
+```
+
+```bash title="Run the app (input from foreign source)"
+echo '{"ts": "2022-01-01 13:00:00.000000000", "temperature": 5.3}' | nc localhost 54300
+```
+
 </TabItem>
 
 <TabItem value="c" label="C">
