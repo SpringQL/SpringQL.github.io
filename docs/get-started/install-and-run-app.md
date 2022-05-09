@@ -26,12 +26,14 @@ cd springql-demo
 ```
 
 Then go to [releases page](https://github.com/SpringQL/SpringQL-client-c/releases) of SpringQL-client-c.
-Download the latest version of `springql_client-<your OS>-<your arch>-debug.zip` and unzip it.
+Download the latest version of `springql_client-<your arch & OS>-debug.zip` [^1] and unzip it.
+
+[^1]: See <https://doc.rust-lang.org/nightly/rustc/platform-support.html> to correctly select `<your arch & OS>`.
 
 Then copy the header file and dynamic library to the `springql-demo` directory.
 
 ```bash title="Copy header file and dynamic library"
-cp /path/to/download/springql_client-<your OS>-<your arch>-debug/* .
+cp /path/to/download/springql_client-<your arch & OS>-debug/* .
 ```
 
 ### Write a demo
@@ -197,8 +199,12 @@ echo '{"ts": "2022-01-01 13:00:00.000000000", "temperature": 5.3}\n{"ts": "2022-
 In another terminal, start the demo app.
 You also need to link to the `libspringql_client` in run-time.
 
-```bash title="Run the demo"
+```bash title="Run the demo (Linux)"
 LD_LIBRARY_PATH=. ./a.out
+```
+
+```bash title="Run the demo (macOS)"
+DYLD_LIBRARY_PATH=. ./a.out
 ```
 
 Then you'll get the following outputs:
