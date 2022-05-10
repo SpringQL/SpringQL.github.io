@@ -275,3 +275,11 @@ Then, you'll get the following outputs:
 ```text title="Output"
 2022-01-01 13:00:00.000000000   41.54
 ```
+
+## App2: Window aggregation
+
+Stream data are unbound in nature. Some kind of operations such as simple arithmetic conversion and filtering are naturally applied to each of streaming row.
+
+But other types of operations, such as sort, aggregation, and join, are applied to a set of rows.
+How can you make a set of rows from unbound sequence of rows?
+You can use **windows** to split unbound rows into bounded amount of rows.
