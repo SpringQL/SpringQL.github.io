@@ -278,8 +278,14 @@ Then, you'll get the following outputs:
 
 ## App2: Window aggregation
 
-Stream data are unbound in nature. Some kind of operations such as simple arithmetic conversion and filtering are naturally applied to each of streaming row.
+Stream data are unbounded in nature. Some kind of operations such as simple arithmetic conversion and filtering are naturally applied to each of streaming row.
 
 But other types of operations, such as sort, aggregation, and join, are applied to a set of rows.
-How can you make a set of rows from unbound sequence of rows?
-You can use **windows** to split unbound rows into bounded amount of rows.
+How can you make a set of rows from unbounded sequence of rows?
+You can use **windows** to split unbounded rows into bounded amount of rows.
+
+![Stream data and windows](/img/docs/get-started/write-basic-apps/windowing.drawio.svg)
+
+In the figure above, you see a stream data includes (conceptually) unbouded number of records.
+Also, you see there are three windows, each having 2, 1, and 1 records.
+Inside a window, the number of records is bounded. So you can apply set operations like sort, aggregation, and join within the window.
