@@ -18,7 +18,10 @@ Let's start with a very simple pipeline (dataflow in SpringQL), which is quite s
 
 ```mermaid
 graph TB
-    fsrc(["TCP client (nc)<br>(Temperature records in Celcius)"]) -- "Source reader (TCP server)" --> src[[source_temperature_celsius]] -- Pump: c_to_f<br>temperature * 1.8 + 32.0 --> sink[[sink_temperature_fahrenheit]] -- "Sink writer (TCP client)" --> fsink(["TCP server (nc)<br>(Temperature records in Fahrenheit)"])
+    fsrc(["TCP client (nc)<br>(Temperature records in Celcius)"]) -- "Source reader (TCP server)" -->
+    src[[source_temperature_celsius]] -- Pump: c_to_f<br>temperature * 1.8 + 32.0 -->
+    sink[[sink_temperature_fahrenheit]] -- "Sink writer (TCP client)" -->
+    fsink(["TCP server (nc)<br>(Temperature records in Fahrenheit)"])
 ```
 
 The above diagram represents the pipeline you will define in the code.
@@ -289,3 +292,61 @@ You can use **windows** to split unbounded rows into bounded amount of rows.
 In the figure above, you see a stream data includes (conceptually) unbouded number of records.
 Also, you see there are three windows, each having 2, 1, and 1 records.
 Inside a window, the number of records is bounded. So you can apply set operations like sort, aggregation, and join within the window.
+
+Here we start a new app! This app feeds stock trade records and calculates average stock amount within windows.
+
+```mermaid
+graph TB
+    fsrc(["TCP client (nc)<br>(Trade records)"]) -- "Source reader (TCP server)" -->
+
+    src[[source_trade]] -- "Pump: avg_all<br>AVG(amount)<br>(10 sec window)" -->
+    sink_all[[sink_avg_all]] -- "Sink writer (TCP client)" -->
+    fsink_all(["TCP server (nc)<br>(Average stock amount for all stocks)"])
+
+    src[[source_trade]] -- "Pump: avg__by_stock<br>AVG(amount) GROUP BY symbol<br>(2 sec window)" -->
+    sink_by_stock[[sink_by_stock]] -- "Sink writer (TCP client)" -->
+    fsink_by_stock(["TCP server (nc)<br>(Average stock amount for each stock)"])
+```
+
+The pipeline is split into 2 dataflows from the `source_trade` source stream.
+The left pump calculates the average amount of stocks ordered per 10 seconds. The right pump calculates the average amount of distinct stocks ordered per 2 seconds.
+
+So the output records from the left will be:
+
+```json title="Pseudo output (avg_all)"
+{"ts": "2022-01-01 13:00:00", "avg_amount": 25.0}
+{"ts": "2022-01-01 13:10:00", "avg_amount": 30.0}
+{"ts": "2022-01-01 13:20:00", "avg_amount": 20.0}
+```
+
+and the right will be:
+
+```json title="Pseudo output (avg_all)"
+{"ts": "2022-01-01 13:00:00", "symbol": "ORCL", "avg_amount": 50.0}
+{"ts": "2022-01-01 13:00:00", "symbol": "GOOGL", "avg_amount": 70.0}
+{"ts": "2022-01-01 13:02:00", "symbol": "ORCL", "avg_amount": 53.0}
+{"ts": "2022-01-01 13:02:00", "symbol": "GOOGL", "avg_amount": 67.0}
+```
+
+Are you ready? Let's write the pipeline.
+
+<Tabs>
+<TabItem value="rust" label="Rust">
+
+```toml title="Cargo.toml"
+# ...
+[dependencies]
+springql-core = "*"
+```
+
+```rust title="main.rs"
+```
+
+</TabItem>
+<TabItem value="c" label="C">
+
+```c title="main.c"
+```
+
+</TabItem>
+</Tabs>
