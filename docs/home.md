@@ -11,7 +11,7 @@ SpringQL would help you to develop applications processing unbound data streams 
 In short, SpringQL is a stream processor for edge computing.
 
 - [Get Started](./get-started/install-and-run-app) shows you how to install and run a demo app.  Also you will experience to write SpringQL applications through basic examples.
-- [Learn SpringQL](./learn-springql/introduction-why-to-learn-stream-processing) gives you fundamental concepts about both general stream processing and StreamQL. Learning basics will strongly support your application development.
-- [Application Development](./reference/client-api) pages are reference to write your own applications using SpringQL.
-- [Deployment](./deployment/configuration) provides tips run your applications in your target IoT devices.
-- [Real-World Example](./real-world-example/introduction) shows some realistic applications you may get interests.
+- [Learn SpringQL](./learn-springql/index) gives you fundamental concepts about both general stream processing and StreamQL. Learning basics will strongly support your application development.
+- [Application Development](./reference/index) pages are reference to write your own applications using SpringQL.
+- [Deployment](./deployment/index) provides tips run your applications in your target IoT devices.
+- [Real-World Example](./real-world-example/index) shows some realistic applications you may get interests.
