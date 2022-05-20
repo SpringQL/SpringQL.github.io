@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Event Time and Watermark
+# Event time and watermark
 
 Event time is a timestamp attached to a row. The timestamp can be anything but it is usually the time the row is generated.
 A sensor might add a timestamp to a sensor data, and stream processors can use the timestamp as an event time.
