@@ -7,8 +7,9 @@ sidebar_position: 2
 A source reader conducts the following 3 roles:
 
 1. keeping "connection" (network connection, file handle) to a foreign source.
-2. converting arbitrary data from the foreign source into SpringQL's rows.
-3. pushing the rows into a source stream.
+2. reading arbitrary data from the foreign source.
+3. converting the data from into SpringQL's rows.
+4. pushing the rows into a source stream.
 
 Let's look at an example source reader:
 
@@ -43,24 +44,24 @@ The `source_reader1` does the following:
 A source reader has a name, a type, and options.
 A type of a source reader determines the available options.
 
-The table below shows the currently available source readers.
+Here lists the currently available source readers.
 
 ### NET_CLIENT
 
 Connects to a foreign source via TCP.
 
 - _Options_
-  - `PROTOCOL`: must be `TCP`.
-  - `REMOTE_HOST`: host name or IP address of the remote host.
-  - `REMOTE_PORT`: port number of the remote host.
+  - (required) `PROTOCOL`: must be `TCP`.
+  - (required) `REMOTE_HOST`: host name or IP address of the remote host.
+  - (required) `REMOTE_PORT`: port number of the remote host.
 
 ### NET_SERVER
 
 Accepts to a foreign source's connection via TCP.
 
 - _Options_
-  - `PROTOCOL`: must be `TCP`.
-  - `PORT`: port number to listen.
+  - (required) `PROTOCOL`: must be `TCP`.
+  - (required) `PORT`: port number to listen.
 
 ## Source data format
 
@@ -72,8 +73,8 @@ Currently, only 1-line JSON objects are supported as an input datum from a forei
 
 Say, you have the following source stream:
 
-```sql title="Stream definition in SQL"
-CREATE STREAM s (
+```sql title="Source stream"
+CREATE SOURCE STREAM ss (
     ts TIMESTAMP NOT NULL ROWTIME,    
     c1 INTEGER NOT NULL
 );
