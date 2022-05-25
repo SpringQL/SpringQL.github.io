@@ -16,7 +16,7 @@ CREATE SINK WRITER <sink_writer_name> FOR <sink_stream_name>
 
 ### Example
 
-```sql title="Example
+```sql title="Example"
 CREATE SINK WRITER queue_temperature_fahrenheit FOR sink_temperature_fahrenheit
 TYPE IN_MEMORY_QUEUE OPTIONS (
     NAME 'q'

@@ -16,7 +16,7 @@ INSERT INTO <downstream_name> (<column_name>, ...)
 
 ### Example
 
-```sql title="Example
+```sql title="Example"
 CREATE PUMP ... AS
   INSERT INTO sink_temperature_fahrenheit (ts, temperature)
   SELECT ...

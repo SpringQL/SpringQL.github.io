@@ -21,7 +21,7 @@ FROM <stream_name>
 
 ### Example
 
-```sql title="Example
+```sql title="Example"
 SELECT STREAM
     FLOOR_TIME(source_trade.ts, DURATION_SECS(10)) AS min_ts,
     AVG(source_trade.amount) AS avg_amount

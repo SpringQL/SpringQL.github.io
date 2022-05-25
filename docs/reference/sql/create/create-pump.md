@@ -16,7 +16,7 @@ CREATE PUMP <pump_name> AS
 
 ### Example
 
-```sql title="Example
+```sql title="Example"
 CREATE PUMP c_to_f AS
     INSERT INTO sink_temperature_fahrenheit (ts, temperature)
     SELECT STREAM

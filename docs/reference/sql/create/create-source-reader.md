@@ -16,7 +16,7 @@ CREATE SOURCE READER <source_reader_name> FOR <source_stream_name>
 
 ### Example
 
-```sql title="Example
+```sql title="Example"
 CREATE SOURCE READER tcp_temperature_celsius FOR source_temperature_celsius
 TYPE NET_SERVER OPTIONS (
     PROTOCOL 'TCP',
