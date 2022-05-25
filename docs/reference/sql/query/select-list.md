@@ -6,6 +6,8 @@ sidebar_position: 1
 
 _select_list_ determines what expressions (column reference, for example) to pass to a downstream.
 
+See also: [expression](./expression).
+
 ## Syntax
 
 ```sql title="Syntax"
