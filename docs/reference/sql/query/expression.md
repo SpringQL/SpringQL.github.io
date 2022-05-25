@@ -8,6 +8,48 @@ Expressions appear anywhere in SELECT statements, such as select_list, where cla
 
 A expression is one of the following subsections.
 
+## Constant
+
+### Null constant
+
+```text title="Null constant literal"
+NULL
+```
+
+### Numeric constant
+
+Currently, the following numeric literals are supported.
+
+```text title="Integer constant literal"
+[0-9]+
+```
+
+```text title="Float constant literal"
+[0-9]+\.[0-9]+
+```
+
+Both are evaluated as minimal-sized signed value.
+For example, `1` is evaluated as `SMALLINT`, and `4294967296` (2^32) is evaluated as `INTEGER`.
+
+### String constant
+
+A string constant UTF-8 string wrapped by `'` (single quote). It is evaluated into a TEXT type.
+
+```text title="String constant literal examples"
+'abc'
+'abc  def'
+'あいうえお'
+'🍣'
+```
+
+### Boolean constant
+
+`TRUE` or `FALSE`.
+
+### Duration constant
+
+Constructed from a function call prefixed `DURATION_`.
+
 ## Column reference
 
 A column in a stream can be referenced as follows:
