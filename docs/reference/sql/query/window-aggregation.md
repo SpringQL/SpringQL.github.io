@@ -5,8 +5,9 @@ sidebar_position: 2
 # Window aggregation
 
 In this page, you will see how to write window aggregations in SELECT statements.
-
 See [window](/learn-springql/window) to understand the concept around windowing in SpringQL.
+
+Understanding on `GROUP BY` in standard SQL is also required, so learn a bit about it before writing SpringQL's queries.
 
 ## Aggregation without grouping
 
@@ -14,7 +15,6 @@ See [window](/learn-springql/window) to understand the concept around windowing 
 SELECT STREAM
     <aggregate expression> [AS <alias>] 
     <, ...>*
-    AVG(source_trade.amount) AS avg_amount
 FROM <stream name>
 [FIXED | SLIDING] WINDOW <time-based width in DURATION>, <allowed latency in DURATION>;
 ```
