@@ -20,7 +20,7 @@ Let's start with a very simple pipeline (dataflow in SpringQL), which is quite s
 graph TB
     fsrc(["TCP client (nc)<br>(Temperature records in Celcius)"]) -- "Source reader (TCP server)" -->
     src[[source_temperature_celsius]] -- Pump: c_to_f<br>temperature * 1.8 + 32.0 -->
-    sink[[sink_temperature_fahrenheit]] -- "Sink writer (TCP client)" -->
+    sink[[sink_temperature_fahrenheit]] -- "Sink writer (in-memory queue)" -->
     fsink(["In-memory queue<br>(Temperature records in Fahrenheit)"])
 ```
 
@@ -300,11 +300,11 @@ graph TB
     fsrc(["TCP client (nc)<br>(Trade records)"]) -- "Source reader (TCP server)" -->
 
     src[[source_trade]] -- "Pump: avg_all<br>AVG(amount)<br>(10 sec window)" -->
-    sink_all[[sink_avg_all]] -- "Sink writer (TCP client)" -->
+    sink_all[[sink_avg_all]] -- "Sink writer (in-memory queue)" -->
     fsink_all(["In-memory queue<br>(Average stock amount for all stocks)"])
 
     src[[source_trade]] -- "Pump: avg_by_symbol<br>AVG(amount) GROUP BY symbol<br>(2 sec window)" -->
-    sink_avg_by_stock[[sink_avg_by_symbol]] -- "Sink writer (TCP client)" -->
+    sink_avg_by_stock[[sink_avg_by_symbol]] -- "Sink writer (in-memory queue)" -->
     fsink_by_stock(["In-memory queue<br>(Average stock amount for each stock)"])
 ```
 
