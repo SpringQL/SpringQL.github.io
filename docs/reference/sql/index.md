@@ -13,8 +13,7 @@ Currently, SpringQL supports quite limited subset of SQL standard.
 You pass SQLs to SpringQL using the following APIs.
 
 - **Rust**
-  - High-level API: [SpringPipelineHL::command()](https://docs.rs/springql-core/latest/springql_core/high_level_rs/index.html#springql-core-high_level_rs-new)
-  - Low-level API: [spring_command()](https://docs.rs/springql-core/0.9.0/springql_core/low_level_rs/fn.spring_command.html)
+  - [SpringPipeline::command()](https://docs.rs/springql-core/latest/springql_core/api/struct.SpringPipeline.html#method.command)
 - Other languages
   - `spring_command()`
 
