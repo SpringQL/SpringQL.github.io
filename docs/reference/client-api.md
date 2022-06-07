@@ -12,4 +12,4 @@ We will generate HTML documents in the future.
 
 ## Rust
 
-See [the high-level Rust API's reference](https://docs.rs/springql-core/latest/springql_core/high_level_rs/index.html).
+See [the Rust API's reference](https://docs.rs/springql-core/latest/springql_core/api/index.html).
