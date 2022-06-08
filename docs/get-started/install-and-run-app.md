@@ -38,11 +38,11 @@ springql-core = "*"
 Finally, fix `main.rs` as below:
 
 ```rust title="main.rs"
-use springql_core::{high_level_rs::SpringPipelineHL, low_level_rs::SpringConfig};
+use springql_core::api::{SpringPipeline, SpringConfig};
 
 fn main() {
     // Create a pipeline (dataflow definition in SpringQL).
-    let pipeline = SpringPipelineHL::new(&SpringConfig::default()).unwrap();
+    let pipeline = SpringPipeline::new(&SpringConfig::default()).unwrap();
 
     // Create a source stream. A stream is similar to a table in relational database.
     // A source stream is a stream to fetch stream data from a foreign source.
