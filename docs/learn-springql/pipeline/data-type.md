@@ -64,4 +64,8 @@ SpringQL currently supports the following data types.
 
 ## Binary
 
-Not supported yet.
+| Language | Type name                     |
+| -------- | ----------------------------- |
+| SQL      | BLOB                          |
+| Rust     | `Vec<u8>`                     |
+| C        | `const void *` , int (length) |
