@@ -27,18 +27,18 @@ cargo new --bin springql-demo
 cd springql-demo
 ```
 
-And then, add `springql-core` to your `Cargo.toml`:
+And then, add `springql` to your `Cargo.toml`:
 
 ```toml title="Cargo.toml"
 # ...
 [dependencies]
-springql-core = "*"
+springql = "*"
 ```
 
 Finally, fix `main.rs` as below:
 
 ```rust title="main.rs"
-use springql_core::api::{SpringPipeline, SpringConfig};
+use springql::{SpringPipeline, SpringConfig};
 
 fn main() {
     // Create a pipeline (dataflow definition in SpringQL).
