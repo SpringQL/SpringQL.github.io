@@ -755,9 +755,7 @@ They occur within 1 second (from 13:00:00 to 13:00:01) so the three records are 
 After 10 seconds pass (when 6th input record is input), both the 2-second window and the 10-second window are triggered to emit output lines.
 
 Note that "seconds" here are not measured from a wallclock time but from timestamps in input records.
-Columns with `ROWTIME` keyword are **event time**. SpringQL uses event time for time-based windows. [^1]
-
-[^1]: Wallclock-based time (processing time) will be supported in the future.
+Columns with `ROWTIME` keyword are **event time**. SpringQL uses either of the event time (if available) or processing time, the time when a row is inserted to a stream, for time-based windows.
 
 ## What's next?
 
