@@ -26,6 +26,14 @@ This statements defines stream `s` with two columns: `ts` and `c1`.
 
 See the [Data type](./data-type) page for more information about columns' definition.
 
+## Rowtime, event time, and processing time
+
+Every row in SpringQL has a _rowtime_. A rowtime is either a:
+
+- Event time: when the stream definition includes a `ROWTIME` keyword
+- Processing time: otherwise.
+  - Processing time is the time when the row is inserted to the stream.
+
 ## Source streams and sink streams
 
 SpringQL provides not only "normal" streams, but also _source streams_ and _sink streams_.
