@@ -60,6 +60,14 @@ A column in a stream can be referenced as follows:
 
 Note that, currently, you cannot omit the stream name.
 
+### Special columns
+
+For streams without `ROWTIME` keyword, the `ptime` special column is available to get the processing time of rows.
+
+```text title="ptime"
+<stream name>.ptime
+```
+
 ## Operator invocation
 
 An operator takes one (unary operator) or two (binary operator) operands.
