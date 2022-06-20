@@ -55,15 +55,7 @@ Connects to a foreign source via TCP.
   - (required) `REMOTE_HOST`: host name or IP address of the remote host.
   - (required) `REMOTE_PORT`: port number of the remote host.
 
-### NET_SERVER
-
-Accepts to a foreign source's connection via TCP.
-
-- _Options_
-  - (required) `PROTOCOL`: must be `TCP`.
-  - (required) `PORT`: port number to listen.
-
-## Source data format
+#### Data format
 
 Currently, only 1-line JSON objects are supported as an input datum from a foreign source.
 
@@ -99,3 +91,26 @@ The following ones are invalid:
 # string cannot be converted into INTEGER type 
 { "ts": "2020-01-01 00:00:00.000000000", "c1": "1" }
 ```
+
+### NET_SERVER
+
+Accepts to a foreign source's connection via TCP.
+
+- _Options_
+  - (required) `PROTOCOL`: must be `TCP`.
+  - (required) `PORT`: port number to listen.
+
+#### Data format
+
+The same as `NET_CLIENT`.
+
+### CAN
+
+Read CAN frame data from a [SocketCAN](https://docs.kernel.org/networking/can.html) interface.
+
+- _Options_
+  - (required) `INTERFACE`: SocketCAN interface name (e.g. `can0`, `vcan0`, `slcan0`).
+
+#### Data format
+
+CAN frame.
