@@ -34,9 +34,17 @@ SpringQL currently supports the following data types.
 | Rust     | i64       |
 | C        | long      |
 
+#### 4-byte unsigned
+
+| Language | Type name        |
+| -------- | ---------------- |
+| SQL      | UNSIGNED INTEGER |
+| Rust     | u32              |
+| C        | unsigned int     |
+
 ### Floating point number
 
-#### 4-byte signed
+#### 4-byte
 
 | Language | Type name |
 | -------- | --------- |
