@@ -103,3 +103,14 @@ Accepts to a foreign source's connection via TCP.
 #### Data format
 
 The same as `NET_CLIENT`.
+
+### CAN
+
+Read CAN frame data from a [SocketCAN](https://docs.kernel.org/networking/can.html) interface.
+
+- _Options_
+  - (required) `INTERFACE`: SocketCAN interface name (e.g. `can0`, `vcan0`, `slcan0`).
+
+#### Data format
+
+CAN frame.
