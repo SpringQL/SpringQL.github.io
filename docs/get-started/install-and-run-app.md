@@ -282,7 +282,7 @@ int main()
         "    );");
     assert_ok(ret);
 
-    SpringRow *row;
+    SpringSinkRow *row;
     while (1)
     {
         // Get a row,

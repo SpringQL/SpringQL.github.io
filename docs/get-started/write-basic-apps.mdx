@@ -224,7 +224,7 @@ int main()
 
     fprintf(stderr, "waiting JSON records in tcp/54300...\n");
 
-    SpringRow *row;
+    SpringSinkRow *row;
     while (1)
     {
         row = spring_pop(pipeline, "q");
@@ -647,7 +647,7 @@ int main()
 
     fprintf(stderr, "waiting JSON records in tcp/54300...\n");
 
-    SpringRow *row;
+    SpringSinkRow *row;
     bool is_err = false;
     while (1)
     {
