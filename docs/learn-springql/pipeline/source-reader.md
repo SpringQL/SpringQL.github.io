@@ -46,6 +46,22 @@ A type of a source reader determines the available options.
 
 Here lists the currently available source readers.
 
+### IN_MEMORY_QUEUE
+
+Reads data from an in-memory queue allocated in the application's memory space linked to SpringQL.
+The application pushes rows from the queue using `*push()` API.
+
+See: [Client API](../../reference/client-api).
+
+- _Options_
+  - (required) `NAME`: queue's name.
+
+#### Data format
+
+`*push()` API accepts `SpringRow`.
+
+See [Client API](../../reference/client-api) to learn how to create `SpringRow`s from client applications.
+
 ### NET_CLIENT
 
 Connects to a foreign source via TCP.
