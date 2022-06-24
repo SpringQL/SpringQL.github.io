@@ -304,7 +304,7 @@ int main()
         fprintf(stderr, "%s\t%f\n", ts, temperature_fahrenheit);
 
         // Free the row
-        spring_row_close(row);
+        spring_sink_row_close(row);
     }
 
     // Free the remaining resources
