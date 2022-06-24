@@ -241,7 +241,7 @@ int main()
         assert_ok(ret);
 
         fprintf(stderr, "%s\t%f\n", ts, temperature_fahrenheit);
-        spring_row_close(row);
+        spring_sink_row_close(row);
     }
 
     ret = spring_close(pipeline);
@@ -669,7 +669,7 @@ int main()
                 assert_ok(ret);
 
                 fprintf(stderr, "[q_avg_all] %s\t%f\n", ts, avg_amount);
-                spring_row_close(row);
+                spring_sink_row_close(row);
             }
             else
             {
@@ -692,7 +692,7 @@ int main()
             assert_ok(ret);
 
             fprintf(stderr, "[q_avg_by_symbol] %s\t%s\t%f\n", ts, symbol, avg_amount);
-            spring_row_close(row);
+            spring_sink_row_close(row);
         }
         else
         {
