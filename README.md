@@ -16,26 +16,20 @@ $ yarn start
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-### Build
+### Build & Deployment
 
-```
-$ yarn build
-```
+- Pull-requests to `main` branch hook build (dry-run).
+- Commits to `main` hook automatic deployment to `gh-pages` branch.
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+### Versioning
 
-### Deployment
+- You should write docs for the next version in `docs/**`.
+  - URL: `/next/`
+- After releasing the SpringQL `v0.15.0`, for example, run the following command and make a pull-request to `main` branch:
 
-Using SSH:
+    ```console
+    yarn run docusaurus docs:version 0.15
+    ```
 
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+  - Note that you must not include the patch version because patch versions should not change the documents.
+- If you find any document mistakes in older versions, you can directly edit the old version in `versioned_docs/version-*/**`. Then create a pull-request to `main` branch.
