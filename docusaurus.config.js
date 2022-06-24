@@ -51,6 +51,11 @@ const config = {
             label: 'Docs',
           },
           {
+            type: 'docsVersionDropdown',
+            position: 'left',
+            dropdownActiveClassDisabled: true,
+          },
+          {
             href: 'https://github.com/SpringQL/SpringQL',
             label: 'GitHub',
             position: 'right',
