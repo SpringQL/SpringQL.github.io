@@ -73,6 +73,26 @@ const config = {
         darkTheme: darkCodeTheme,
         additionalLanguages: ['rust', 'toml'],
       },
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'X3PWBAJKGD',
+
+        // Public API key: it is safe to commit it
+        apiKey: 'aab870d5be0eb2c6ec556b0acc4bb30a',
+
+        indexName: 'springql',
+
+        // Optional: see doc section below
+        contextualSearch: true,
+
+        // Optional: Algolia search parameters
+        searchParameters: {},
+
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: 'search',
+
+        //... other Algolia params
+      },
     }),
 };
 
