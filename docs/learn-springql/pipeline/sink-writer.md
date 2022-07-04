@@ -65,6 +65,33 @@ Connects to a foreign sink via TCP.
   - `REMOTE_HOST`: host name or IP address of the remote host.
   - `REMOTE_PORT`: port number of the remote host.
 
+### HTTP1_CLIENT
+
+Requests to a foreign sink via HTTP/1.1.
+
+Currently only a single BLOB is supported for a HTTP body.
+
+- _Options_
+  - `REMOTE_HOST`: host name or IP address of the remote host.
+  - `REMOTE_PORT`: port number of the remote host.
+  - `METHOD`: HTTP method.
+  - `URL`,
+  - `HEADER_{HTTP header name}`: HTTP header.
+  - `BLOB_BODY_COLUMN`: sink stream's column name to put as a HTTP body.
+
+```sql title="HTTP1_CLIENT example"
+CREATE SINK WRITER http_sink_1 FOR sink_1
+  TYPE HTTP1_CLIENT OPTIONS (
+    REMOTE_HOST '{remote_host}',
+    REMOTE_PORT '{remote_port}',
+    METHOD 'POST',
+    URL 'http://{remote_host}:{remote_port}/test',
+    HEADER_Content-Type 'application/octet-stream',
+    HEADER_Connection 'keep-alive',
+    BLOB_BODY_COLUMN 'http_body'
+);
+```
+
 ## Sink data format
 
 Currently, only 1-line JSON objects are supported as an output datum from a source writer.
