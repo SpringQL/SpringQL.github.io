@@ -2,4 +2,6 @@
 sidebar_position: 1
 ---
 
-# Introduction
+# Real-World Example
+
+Choose a sub-page from the sidebar.
