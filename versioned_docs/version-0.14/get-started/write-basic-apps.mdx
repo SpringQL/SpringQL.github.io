@@ -46,7 +46,7 @@ springql-core = "*"
 ```
 
 ```rust title="main.rs"
-use springql_core::api::{SpringPipeline, SpringConfig};
+use springql::{SpringPipeline, SpringConfig};
 
 fn main() {
     const SOURCE_PORT: u16 = 54300;
@@ -359,7 +359,7 @@ springql-core = "*"
 
 use std::{sync::Arc, thread, time::Duration};
 
-use springql_core::api::{SpringPipeline, SpringConfig};
+use springql::{SpringPipeline, SpringConfig};
 
 fn main() {
     const SOURCE_PORT: u16 = 54300;
