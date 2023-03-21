@@ -56,6 +56,7 @@ timeout_msec = 3_000
 [source_reader]
 net_connect_timeout_msec = 1_000
 net_read_timeout_msec = 100
+net_address = "0.0.0.0"
 
 [sink_writer]
 net_connect_timeout_msec = 1_000
